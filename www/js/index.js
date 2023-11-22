@@ -14,7 +14,7 @@ db.transaction(function (tx) {
 
 
 // Adicionar a view principal
-var mainView = app.views.create('.view-main');
+//var mainView = app.views.create('.view-main');
 
 // Evento deviceready do Cordova
 document.addEventListener('deviceready', onDeviceReady, false);
@@ -43,7 +43,8 @@ function onDeviceReady() {
     });
 }
 
-// Consultar o SQLite e preencher a tabela
+// ...
+
 function consultarSQLite(tabelaNome, elementoID) {
     var db = window.sqlitePlugin.openDatabase({ name: 'alibus.db', location: 'default' });
 
@@ -54,23 +55,14 @@ function consultarSQLite(tabelaNome, elementoID) {
             var len = results.rows.length;
             if (len > 0) {
                 var tabelaHTML = '<table>';
-                // Cabeçalho da tabela
-                tabelaHTML += '<thead><tr>';
-                for (var col = 0; col < results.rows.item(0).length; col++) {
-                    tabelaHTML += '<th>' + results.rows.item(0).key(col) + '</th>';
-                }
-                tabelaHTML += '</tr></thead>';
-
-                // Corpo da tabela
-                tabelaHTML += '<tbody>';
                 for (var i = 0; i < len; i++) {
                     tabelaHTML += '<tr>';
-                    for (var col = 0; col < results.rows.item(i).length; col++) {
-                        tabelaHTML += '<td>' + results.rows.item(i).get(col) + '</td>';
+                    for (var col in results.rows.item(i)) {
+                        tabelaHTML += '<td>' + results.rows.item(i)[col] + '</td>';
                     }
                     tabelaHTML += '</tr>';
                 }
-                tabelaHTML += '</tbody></table>';
+                tabelaHTML += '</table>';
 
                 // Inserir a tabela dinamicamente no elemento com o ID correspondente
                 $('#' + elementoID).html(tabelaHTML);
@@ -78,9 +70,14 @@ function consultarSQLite(tabelaNome, elementoID) {
                 // Exibir mensagem se nenhum dado for encontrado
                 $('#' + elementoID).html('<p>Nenhum dado encontrado para ' + tabelaNome + '.</p>');
             }
-        }, null);
+        }, function (tx, error) {
+            // Exibir mensagem de erro, se aplicável
+            $('#' + elementoID).html('<p>Erro na consulta para ' + tabelaNome + '.</p>');
+        });
     });
 }
+
+
 
 
 //Congresso
