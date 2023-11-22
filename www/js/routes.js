@@ -37,6 +37,16 @@ function onDeviceReady() {
           },
         },
         {
+          path: '/tabelasHTML/',
+          url: 'tabelasHTML.html',
+          animate: false,
+          on: {
+            pageInit: function (event, page) {
+              // Fazer algo específico da página de indicadores, se necessário
+            },
+          },
+        },
+        {
           path: '/congresso/',
           url: 'congresso.html',
           animate: false,

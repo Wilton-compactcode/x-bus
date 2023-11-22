@@ -13,62 +13,72 @@ db.transaction(function (tx) {
 });
 
 
+// Adicionar a view principal
+var mainView = app.views.create('.view-main');
+
+// Evento deviceready do Cordova
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Função chamada quando o dispositivo estiver pronto
 function onDeviceReady() {
+    // Preencher as tabelas ao clicar nos botões
     $('#btnCongresso').on('click', function () {
-        consultarSQLite('tabela1');
+        mainView.router.navigate('/tabelasHTML/');
+        consultarSQLite('congresso', 'tabela1');
     });
 
     $('#btnAssembleia').on('click', function () {
-        consultarSQLite('tabela2');
+        mainView.router.navigate('/tabelasHTML/');
+        consultarSQLite('assembleia', 'tabela2');
     });
 
     $('#btnIndicador').on('click', function () {
-        consultarSQLite('tabela3');
+        mainView.router.navigate('/tabelasHTML/');
+        consultarSQLite('indicadores', 'tabela3');
     });
 
     $('#btnLimpeza').on('click', function () {
-        consultarSQLite('tabela4');
+        mainView.router.navigate('/tabelasHTML/');
+        consultarSQLite('limpeza', 'tabela4');
     });
 }
 
-function consultarSQLite(tabela) {
+// Consultar o SQLite e preencher a tabela
+function consultarSQLite(tabelaNome, elementoID) {
     var db = window.sqlitePlugin.openDatabase({ name: 'alibus.db', location: 'default' });
 
     db.transaction(function (tx) {
-        var query = 'SELECT * FROM ' + tabela;
+        var query = 'SELECT * FROM ' + tabelaNome;
 
         tx.executeSql(query, [], function (tx, results) {
             var len = results.rows.length;
             if (len > 0) {
-                var relatorioData = '';
-
-                for (var i = 0; i < len; i++) {
-                    relatorioData += 'ID: ' + results.rows.item(i).id + ', Nome: ' + results.rows.item(i).nome + '\n';
+                var tabelaHTML = '<table>';
+                // Cabeçalho da tabela
+                tabelaHTML += '<thead><tr>';
+                for (var col = 0; col < results.rows.item(0).length; col++) {
+                    tabelaHTML += '<th>' + results.rows.item(0).key(col) + '</th>';
                 }
+                tabelaHTML += '</tr></thead>';
 
-                gerarPDF(relatorioData, tabela);
+                // Corpo da tabela
+                tabelaHTML += '<tbody>';
+                for (var i = 0; i < len; i++) {
+                    tabelaHTML += '<tr>';
+                    for (var col = 0; col < results.rows.item(i).length; col++) {
+                        tabelaHTML += '<td>' + results.rows.item(i).get(col) + '</td>';
+                    }
+                    tabelaHTML += '</tr>';
+                }
+                tabelaHTML += '</tbody></table>';
+
+                // Inserir a tabela dinamicamente no elemento com o ID correspondente
+                $('#' + elementoID).html(tabelaHTML);
             } else {
-                alert('Nenhum dado encontrado para ' + tabela + '.');
+                // Exibir mensagem se nenhum dado for encontrado
+                $('#' + elementoID).html('<p>Nenhum dado encontrado para ' + tabelaNome + '.</p>');
             }
         }, null);
-    });
-}
-
-function gerarPDF(relatorioData, tabela) {
-    var options = {
-        documentSize: 'A4',
-        type: 'share',
-        fileName: 'Relatorio_' + tabela + '.pdf',
-        directory: 'Documents',
-        data: relatorioData
-    };
-
-    pdf.htmlToPDF(options, function (success) {
-        alert('PDF gerado com sucesso! Local: ' + success.filePath);
-    }, function (error) {
-        alert('Erro ao gerar o PDF: ' + error);
     });
 }
 
