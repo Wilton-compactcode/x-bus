@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <link rel="shortcut icon" href="img/bus.png" />
+    <!-- Your app title -->
+    <title>Event Bus</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/personalizado.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+
+
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="assembleia" class="page">
+
+                <!-- Top Navbar -->
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner justify-content-center">
+                        <div class="title ">ASSEMBLÉIA</div>
+                    </div>
+                </div>
+
+                 <!-- Scrollable page content -->
+                 <div class="page-content">
+                  <div class="block">
+                      <div class="list">
+                          <ul> 
+                              <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input id="input-pesquisa-nome" type="text" placeholder=" Digite o nome que quer pesquisar" class="input-outline">
+                                    </div>
+                                </div>
+                            </li>
+                              <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Id</div>
+                                    <div class="item-input-wrap">
+                                        <input id="input-id" type="text" name="congregacao" placeholder="" class="input-outline">
+                                    </div>
+                                </div>
+                              </li>
+                              <li class="item-content ">
+                                <div class="title">No cadastro preencha só daqui pra baixo</div>
+                              </li>  
+                              <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="title item-label">Congregação</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-congregacao" type="text" name="congregacao" placeholder="Informe a congregação" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                  
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Nome</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-nome" type="text" name="nome" placeholder="Informe o nome" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                  
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">RG</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-rg" type="text" name="rg" placeholder="Informe o RG" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                                
+                                  <li class="item-content item-input">
+                                    <div class="item-media"></div>
+                                    <div class="item-inner">
+                                      <div class="item-title item-label">Poltrona</div>
+                                      <div class="item-input-wrap input-dropdown-wrap">
+                                        <select id="input-poltrona">
+                                          <option value=""></option>
+                                          <option value="01">01</option>
+                                          <option value="02">02</option>
+                                          <option value="03">03</option>
+                                          <option value="04">04</option>
+                                          <option value="05">05</option>
+                                          <option value="06">06</option>
+                                          <option value="07">07</option>
+                                          <option value="08">08</option>
+                                          <option value="09">09</option>
+                                          <option value="10">10</option>
+                                          <option value="11">11</option>
+                                          <option value="12">12</option>
+                                          <option value="13">13</option>
+                                          <option value="14">14</option>
+                                          <option value="15">15</option>
+                                          <option value="16">16</option>
+                                          <option value="17">17</option>
+                                          <option value="18">18</option>
+                                          <option value="19">19</option>
+                                          <option value="20">20</option>
+                                          <option value="21">21</option>
+                                          <option value="22">22</option>
+                                          <option value="23">23</option>
+                                          <option value="24">24</option>
+                                          <option value="25">25</option>
+                                          <option value="26">26</option>
+                                          <option value="27">27</option>
+                                          <option value="28">28</option>
+                                          <option value="29">29</option>
+                                          <option value="30">30</option>
+                                          <option value="31">31</option>
+                                          <option value="32">32</option>
+                                          <option value="33">33</option>
+                                          <option value="34">34</option>
+                                          <option value="35">35</option>
+                                          <option value="36">36</option>
+                                          <option value="37">37</option>
+                                          <option value="38">38</option>
+                                          <option value="39">39</option>
+                                          <option value="40">40</option>
+                                          <option value="41">41</option>
+                                          <option value="42">42</option>
+                                          <option value="43">43</option>
+                                          <option value="44">44</option>
+                                          <option value="45">45</option>
+                                          <option value="46">46</option>
+                                          <option value="47">47</option>
+                                          <option value="48">48</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </li>                    
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Responsável</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-responsavel" type="text" name="responsavel" placeholder="Informe o responsável" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Pagamento</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-pagamento" type="text" name="pagamento" placeholder="Informe se foi pago" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                          </ul>
+
+                          <!-- Submit button -->
+                          <div class="block">
+                            <div class="row">
+                                <div class="grid grid-cols-3 grid-gap">
+                                    <button id="btnListarAssembPessoas" class="button button-fill"><i class="mdi mdi-text-box-search"></i> Lista</button>                                      
+                                    <button id="btnAtualizarAssembRegistro" class="button button-fill"><i class="mdi mdi-pencil-box"></i> Editar</button>
+                                    <button id="btnAssembSalvar" class="button button-fill"><i class="mdi mdi-content-save-check-outline"></i> Salvar</button>
+                                </div><br>
+                                <div class="grid grid-cols-3 grid-gap">
+                                  <button id="btnPesquisarAssembPorNome" class="button button-fill"><i class="mdi mdi-card-search-outline"></i> Presqusar</button>
+                                  <button id="btnAssembleia" class="button button-fill"><i class="mdi mdi-file-pdf-box"></i> Gerar PDF</button>
+                                  <button id="btnAssembExcluir" class="button button-fill"><i class="mdi mdi-delete"></i> Excluir</button>                 
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <!-- Gerar PDF -->
+    <script type="text/javascript" src="path/to/jspdf.umd.min.js"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>

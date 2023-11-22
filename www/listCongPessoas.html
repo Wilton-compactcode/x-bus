@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <link rel="shortcut icon" href="img/bus.png" />
+    <!-- Your app title -->
+    <title>Event Bus</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/personalizado.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+
+
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="listCongPessoas" class="page">
+
+                <!-- Top Navbar -->
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner justify-content-center">
+                        <div class="title ">PASSAGENS do CONGRESSO</div>
+                        <div class="right">
+                            <a id="drop" href="#" class="link">
+                                <i class="mdi mdi-delete"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scrollable page content -->
+                <div id="miolo" class="page-content">
+                    <div class="block">
+                        <!-- <div id="miolo"></div> -->
+                        <div class="card">
+                            <div class="card-header">Passageiro</div>
+                            <div class="card-content card-content-padding">
+                                <p><b>Id:</p>
+                                <p><b>Congregação:</p>
+                                <p><b>Nome:</b></p>
+                                <p><b>RG:</b></p>
+                                <p><b>Dias:</b></p>
+                                <p><b>Poltrona:</b></p>
+                                <p><b>Responsável:</b> </p>
+                                <p><b>Pagamento:</b> </p>
+                            </div>
+                            <div class="page-content">
+                                <!-- Adicione este botão -->
+                                <button id="btnEditarRegistro" class="button">Editar Registro</button>
+                                <button id="btnDeletarRegistro" class="button">Deletar Registro</button>
+                            </div>
+                            <!-- <div class="card-footer">
+                                <button id="btnEditarRegistro" class="button">Atualizar</button>
+                                <button id="btnDeletar" class="button">Deletar</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>

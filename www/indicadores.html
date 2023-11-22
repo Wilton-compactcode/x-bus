@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <link rel="shortcut icon" href="img/bus.png" />
+    <!-- Your app title -->
+    <title>Event Bus</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/personalizado.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+
+
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="indicadores" class="page">
+
+                <!-- Top Navbar -->
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner justify-content-center">
+                        <div class="title ">INDICADORES</div>
+                    </div>
+                </div>
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="block">
+                        <div class="list">
+                            <ul>
+                            
+                              <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input id="input-pesquisa-nome" type="text" placeholder=" Digite o nome que quer pesquisar" class="input-outline">
+                                    </div>
+                                </div>
+                            </li>
+                              <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Id</div>
+                                    <div class="item-input-wrap">
+                                        <input id="input-id" type="text" name="congregacao" placeholder="" class="input-outline">
+                                    </div>
+                                </div>
+                              </li>
+                              <li class="item-content ">
+                                <div class="title">No cadastro preencha só daqui pra baixo</div>
+                              </li>  
+                              <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="title item-label">Congregação</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-congregacao" type="text" name="congregacao" placeholder="Informe a congregação" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                  
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Nome</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-nome" type="text" name="nome" placeholder="Informe o nome" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                  
+                                <li class="item-content item-input">
+                                  <div class="item-inner">
+                                    <div class="item-title item-label">Designação</div>
+                                    <div class="item-input-wrap">
+                                      <input id="input-designacao" type="text" name="designacao" placeholder="Informe o designação" class="input-outline">
+                                    </div>
+                                  </div>
+                                </li>
+                            </ul>  
+                            <!-- Submit button -->
+                            <div class="block">
+                              <div class="row">
+                                  <div class="grid grid-cols-3 grid-gap">
+                                      <button id="btnListarIndicadores" class="button button-fill"><i class="mdi mdi-text-box-search"></i> Lista</button>                                      
+                                      <button id="btnEditarIndicador" class="button button-fill"><i class="mdi mdi-pencil-box"></i> Editar</button>
+                                      <button id="btnIndicadorSalvar" class="button button-fill"><i class="mdi mdi-content-save-check-outline"></i> Salvar</button>
+                                  </div><br>
+                                  <div class="grid grid-cols-3 grid-gap">
+                                    <button id="btnPesqIndicadorPorNome" class="button button-fill"><i class="mdi mdi-card-search-outline"></i> Presqusar</button>
+                                    <button id="btnIndicadores" class="button button-fill"><i class="mdi mdi-file-pdf-box"></i> Gerar PDF</button>
+                                    <button id="btnIndicadorExcluir" class="button button-fill"><i class="mdi mdi-delete"></i> Excluir</button>                 
+                                </div>
+                              </div>
+                          </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <!-- Gerar PDF -->
+    <script type="text/javascript" src="path/to/jspdf.umd.min.js"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>
