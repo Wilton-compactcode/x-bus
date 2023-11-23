@@ -13,15 +13,12 @@ db.transaction(function (tx) {
 });
 
 
-// Adicionar a view principal
-//var mainView = app.views.create('.view-main');
 
-// Evento deviceready do Cordova
+
+
 document.addEventListener('deviceready', onDeviceReady, false);
 
-// Função chamada quando o dispositivo estiver pronto
 function onDeviceReady() {
-    // Preencher as tabelas ao clicar nos botões
     $('#btnCongresso').on('click', function () {
         mainView.router.navigate('/tabelasHTML/');
         consultarSQLite('congresso', 'tabela1');
@@ -43,8 +40,6 @@ function onDeviceReady() {
     });
 }
 
-// ...
-
 function consultarSQLite(tabelaNome, elementoID) {
     var db = window.sqlitePlugin.openDatabase({ name: 'alibus.db', location: 'default' });
 
@@ -64,17 +59,51 @@ function consultarSQLite(tabelaNome, elementoID) {
                 }
                 tabelaHTML += '</table>';
 
-                // Inserir a tabela dinamicamente no elemento com o ID correspondente
                 $('#' + elementoID).html(tabelaHTML);
+
+                // Chama a função para gerar o PDF
+                gerarPDF(tabelaHTML, tabelaNome);
             } else {
-                // Exibir mensagem se nenhum dado for encontrado
                 $('#' + elementoID).html('<p>Nenhum dado encontrado para ' + tabelaNome + '.</p>');
             }
         }, function (tx, error) {
-            // Exibir mensagem de erro, se aplicável
             $('#' + elementoID).html('<p>Erro na consulta para ' + tabelaNome + '.</p>');
         });
     });
+}
+
+// ...
+
+function gerarPDF(relatorioData, tabelaNome, elementoID) {
+    var options = {
+        documentSize: 'A4',
+        type: 'datauristring',
+        fileName: 'Relatorio_' + tabelaNome + '.pdf',
+        directory: 'Documents',
+        data: relatorioData
+    };
+
+    pdf.htmlToPDF(options, function (success) {
+        // Cria um botão de compartilhamento
+        var botaoCompartilhar = '<button id="btnCompartilhar" class="button">Compartilhar</button>';
+
+        // Insere o botão dinamicamente no elemento com o ID correspondente
+        $('#' + elementoID).html(botaoCompartilhar);
+
+        // Adiciona um ouvinte de evento para o botão de compartilhamento
+        $('#btnCompartilhar').on('click', function () {
+            compartilharPDF(success.data);
+        });
+
+        alert('PDF gerado com sucesso! Local: ' + success.filePath);
+    }, function (error) {
+        alert('Erro ao gerar o PDF: ' + error);
+    });
+}
+
+
+function compartilharPDF(filePath) {
+    window.plugins.socialsharing.share(null, null, filePath, null);
 }
 
 

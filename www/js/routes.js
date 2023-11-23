@@ -1,103 +1,4 @@
 
-// routes.js
-
-//INICIALIZAÇÃO DO F7 QUANDO DISPOSITIVO ESTÁ PRONTO
-document.addEventListener('deviceready', onDeviceReady, false);
-var app;
-
-function onDeviceReady() {
-  // Carregue o index.js após o dispositivo estar pronto
-  $.getScript('js/index.js', function () {
-    // Crie a instância do Framework7 após carregar o index.js
-    app = new Framework7({
-      // App root element
-      el: '#app',
-      // App Name
-      name: 'Event Ônibus',
-      // App id
-      id: 'br.com.event.bus',
-      // Enable swipe panel
-      panel: {
-        swipe: true,
-      },
-      dialog: {
-        buttonOk: 'Sim',
-        buttonCancel: 'Cancelar',
-      },
-      // Add default routes
-      routes: [
-        {
-          path: '/index/',
-          url: 'index.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página inicial, se necessário
-            },
-          },
-        },
-        {
-          path: '/tabelasHTML/',
-          url: 'tabelasHTML.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página de indicadores, se necessário
-            },
-          },
-        },
-        {
-          path: '/congresso/',
-          url: 'congresso.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página de indicadores, se necessário
-            },
-          },
-        },
-        {
-          path: '/assembleia/',
-          url: 'assembleia.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página de indicadores, se necessário
-            },
-          },
-        },
-        {
-          path: '/indicadores/',
-          url: 'indicadores.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página de indicadores, se necessário
-            },
-          },
-        },
-        {
-          path: '/limpeza/',
-          url: 'limpeza.html',
-          animate: false,
-          on: {
-            pageInit: function (event, page) {
-              // Fazer algo específico da página de indicadores, se necessário
-            },
-          },
-        },
-        // ... (outras rotas)
-      ],
-      // ... (outras configurações)
-    });
-
-    // ... (outros eventos e lógica do Framework7)
-  });
-}
-
-// ... (restante do código de routes.js)
-
-
 
 //INICIALIZAÇÃO DO F7 QUANDO DISPOSITIVO ESTÁ PRONTO
 document.addEventListener('deviceready', onDeviceReady, false);
@@ -127,6 +28,16 @@ var app = new Framework7({
 			$.getScript('js/index.js');
 		},
 	  }
+    },
+    {
+      path: '/tabelasHTML/',
+      url: 'tabelasHTML.html',
+      animate: false,
+      on: {
+        pageInit: function (event, page) {
+          $.getScript('js/index.js');
+        },
+      },
     },
     {
       path: '/indicadores/',
@@ -256,7 +167,7 @@ app.on('routeChange', function (route) {
 
 function onDeviceReady() {
   //Quando estiver rodando no celular
-  var mainView = app.views.create('.view-main', { url: '/index/' });
+  // var mainView = app.views.create('.view-main', { url: '/index/' });
 
   //COMANDO PARA "OUVIR" O BOTAO VOLTAR NATIVO DO ANDROID 	
   document.addEventListener("backbutton", function (e) {

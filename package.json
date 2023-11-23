@@ -17,7 +17,10 @@
     "cordova-electron": "^3.1.0",
     "cordova-pdf-generator": "^2.1.1",
     "cordova-plugin-file": "^8.0.1",
+    "cordova-plugin-file-transfer": "^2.0.0",
+    "cordova-plugin-x-socialsharing": "^6.0.4",
     "cordova-sqlite-storage": "^6.1.0",
+    "es6-promise-plugin": "^4.2.2",
     "windows": "^0.1.2"
   },
   "cordova": {
@@ -30,10 +33,13 @@
       "cordova-plugin-file": {
         "ANDROIDX_WEBKIT_VERSION": "1.4.0"
       },
-      "cordova-pdf-generator": {}
+      "cordova-pdf-generator": {},
+      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-file-transfer": {}
     }
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1"
   }
 }
